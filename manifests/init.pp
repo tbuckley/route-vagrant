@@ -1,5 +1,6 @@
 exec { "apt-get update" :
   command => "/usr/bin/apt-get update",
+  path => "/usr/bin",
 }
 
 # Install git
@@ -7,7 +8,6 @@ package { "git" :
   ensure => "installed",
   require => Exec[ "apt-get update" ],
 }
-
 
 # Install nodejs (order matters!)
 class { "nodejs":
